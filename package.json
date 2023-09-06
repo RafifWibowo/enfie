@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
+    "seed": "node seeder.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "enfie_dev",

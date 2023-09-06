@@ -5,4 +5,10 @@ const getDatas = async () => {
   return dataList;
 };
 
-module.exports = getDatas;
+const createData = async (data) => {
+  const query = await db.query("INSERT INTO data SET ?", [data]);
+  if (!query.affectedRows) return "error when inserting data";
+  return "data created";
+};
+
+module.exports = { getDatas, createData };
