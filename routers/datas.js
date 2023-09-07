@@ -1,5 +1,5 @@
 const express = require("express");
-const { getDatas, createData } = require("../controllers/datas");
+const { getDatas, createData, getTempById, getPressureById, getEnoseById, getAirQualById } = require("../controllers/datas");
 
 const datas = express.Router();
 
@@ -17,6 +17,26 @@ datas.route("/").post(async (req, res) => {
     deviceId,
   };
   res.send(await createData(data));
+});
+
+datas.route("/temp/:id").get(async (req, res) => {
+  const id = parseInt(req.params.id);
+  res.send(await getTempById(id));
+});
+
+datas.route("/press/:id").get(async (req, res) => {
+  const id = parseInt(req.params.id);
+  res.send(await getPressureById(id));
+});
+
+datas.route("/enose/:id").get(async (req, res) => {
+  const id = parseInt(req.params.id);
+  res.send(await getEnoseById(id));
+});
+
+datas.route("/airqual/:id").get(async (req, res) => {
+  const id = parseInt(req.params.id);
+  res.send(await getAirQualById(id));
 });
 
 module.exports = datas;

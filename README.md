@@ -31,11 +31,16 @@ npm run dev
 ```
 
 ## Endpoint
-Method | End-Point | Deskripsi
---- | --- | ---
-`GET` | /device | Mendapatakan semua informasi device
-`GET` | /data | Mendapatakan semua data sensor
-`POST` | /data | Menambahkan data sensor
+
+| Method | End-Point    | Deskripsi                                             |
+| ------ | ------------ | ----------------------------------------------------- |
+| `GET`  | /device      | Mendapatakan semua informasi device                   |
+| `GET`  | /data        | Mendapatakan semua data sensor                        |
+| `POST` | /data        | Menambahkan data sensor                               |
+| `GET`  | /temp/:id    | Mendapatkan data suhu berdasarkan id device           |
+| `GET`  | /press/:id   | Menambahkan data tekanan berdasaran id device         |
+| `GET`  | /enose/:id   | Menambahkan data enose berdasarkan id device          |
+| `GET`  | /airqual/:id | Menambahkan data kualitas udara berdasarkan id device |
 
 ### Registrasi
 
