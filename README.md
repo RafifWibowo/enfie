@@ -10,14 +10,22 @@ After clone this repository, run this command:
 npm install
 ```
 
-change the `.env.example` file to `.env` and change the contents to suit your database.
+Change the `.env.example` file to `.env` and change the contents to suit your database.
 
-Run server:
+After that execute this command to create table to your database:
+
 ```
-npm run dev
+npm run initDb
 ```
 
 Execute seeder:
+
 ```
 npm run seed
+```
+
+Run server:
+
+```
+npm run dev
 ```
