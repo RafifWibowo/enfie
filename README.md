@@ -29,3 +29,26 @@ Run server:
 ```
 npm run dev
 ```
+
+## Endpoint
+Method | End-Point | Deskripsi
+--- | --- | ---
+`GET` | /device | Mendapatakan semua informasi device
+`GET` | /data | Mendapatakan semua data sensor
+`POST` | /data | Menambahkan data sensor
+
+### Registrasi
+
+Contoh
+
+```
+POST https://localhost:8080/data
+
+{
+    "suhu": 35,
+    "tekanan": 10098,
+    "e_nose": 25438,
+    "kualitas_udara": 89376,
+    "deviceId": 1
+}
+```
