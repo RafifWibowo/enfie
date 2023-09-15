@@ -16,7 +16,8 @@ datas.route("/").post(async (req, res) => {
     kualitas_udara,
     deviceId,
   };
-  res.send(await createData(data));
+  const result = await createData(data);
+  res.send(JSON.stringify(result));
 });
 
 datas.route("/temp/:id").get(async (req, res) => {

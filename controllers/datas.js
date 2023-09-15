@@ -7,8 +7,10 @@ const getDatas = async () => {
 
 const createData = async (data) => {
   const query = await db.query("INSERT INTO data SET ?", [data]);
-  if (!query.affectedRows) return "error when inserting data";
-  return "data created";
+  if (!query.affectedRows) {
+    return { message: "error when inserting data" };
+  }
+  return { message: "data created" };
 };
 
 const getTempById = async (id) => {
