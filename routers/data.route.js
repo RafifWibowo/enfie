@@ -1,12 +1,10 @@
 const express = require("express");
 const { createData, getTempById, getPressureById, getEnoseById, getAirQualById } = require("../controllers/data.controller");
 const middleware = require("../middleware/jwt");
-const db = require("../configs/connection");
-
 const router = express.Router();
 
 router.post("/", async (req, res) => {
-  const { suhu, tekanan, e_nose, kualitas_udara, deviceId } = req.body;
+  const { suhu, tekanan, e_nose, kualitas_udara, patient_id } = req.body;
   const data = {
     suhu,
     tekanan,
