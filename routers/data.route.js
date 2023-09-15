@@ -1,5 +1,5 @@
 const express = require("express");
-const { getDatas, createData, getTempById, getPressureById, getEnoseById, getAirQualById } = require("../controllers/datas");
+const { getDatas, createData, getTempById, getPressureById, getEnoseById, getAirQualById } = require("../controllers/data.controller");
 
 const datas = express.Router();
 

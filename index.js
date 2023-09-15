@@ -1,9 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const bodyparser = require("body-parser");
-const users = require("./routers/users");
-const devices = require("./routers/devices");
-const datas = require("./routers/datas");
+const users = require("./routers/user.route");
+const datas = require("./routers/data.route");
 const app = express();
 const port = 8080;
 
@@ -15,7 +14,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/users", users);
-app.use("/devices", devices);
 app.use("/datas", datas);
 
 app.listen(port, () => {
