@@ -3,6 +3,8 @@ const cors = require("cors");
 const bodyparser = require("body-parser");
 const users = require("./routers/user.route");
 const datas = require("./routers/data.route");
+const patients = require("./routers/patient.route");
+
 const app = express();
 const port = 8080;
 
@@ -15,6 +17,7 @@ app.get("/", (req, res) => {
 
 app.use("/users", users);
 app.use("/datas", datas);
+app.use("/patients", patients);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
