@@ -69,10 +69,11 @@ const loginUser = async (email, password) => {
     };
   }
 
-  const data = await db.query("SELECT id FROM user WHERE email = ? AND password = ?", [email, password]);
+  const data = await db.query("SELECT id, name FROM user WHERE email = ? AND password = ?", [email, password]);
   const id = data[0].id;
+  const name = data[0].name;
   // console.log(data[0].id);
-  const token = jwt.sign({ userId: id }, process.env.JWT_KEY, { expiresIn: "1d" });
+  const token = jwt.sign({ userId: id, name: name }, process.env.JWT_KEY, { expiresIn: "1d" });
   return {
     status: "success",
     message: "Berhasil Login",
@@ -80,4 +81,4 @@ const loginUser = async (email, password) => {
   };
 };
 
-module.exports = { getUsers, registUser, loginUser };
+module.exports = { getUsers, registUser, loginUser, getUser };
