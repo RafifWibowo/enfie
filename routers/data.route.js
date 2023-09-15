@@ -1,13 +1,14 @@
 const express = require("express");
 const { getDatas, createData, getTempById, getPressureById, getEnoseById, getAirQualById } = require("../controllers/data.controller");
+const { route } = require("./user.route");
 
-const datas = express.Router();
+const router = express.Router();
 
-datas.route("/").get(async (req, res) => {
+router.get("/", async (req, res) => {
   res.send(await getDatas());
 });
 
-datas.route("/").post(async (req, res) => {
+router.post("/", async (req, res) => {
   const { suhu, tekanan, e_nose, kualitas_udara, deviceId } = req.body;
   const data = {
     suhu,
@@ -20,24 +21,24 @@ datas.route("/").post(async (req, res) => {
   res.send(JSON.stringify(result));
 });
 
-datas.route("/temp/:id").get(async (req, res) => {
+router.get("/temp/:id", async (req, res) => {
   const id = parseInt(req.params.id);
   res.send(await getTempById(id));
 });
 
-datas.route("/press/:id").get(async (req, res) => {
+router.get("/press/:id", async (req, res) => {
   const id = parseInt(req.params.id);
   res.send(await getPressureById(id));
 });
 
-datas.route("/enose/:id").get(async (req, res) => {
+router.get("/enose/:id", async (req, res) => {
   const id = parseInt(req.params.id);
   res.send(await getEnoseById(id));
 });
 
-datas.route("/airqual/:id").get(async (req, res) => {
+router.get("/airqual/:id", async (req, res) => {
   const id = parseInt(req.params.id);
   res.send(await getAirQualById(id));
 });
 
-module.exports = datas;
+module.exports = router;

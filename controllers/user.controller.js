@@ -7,6 +7,11 @@ const getUsers = async () => {
   return userList;
 };
 
+const getUser = async (id) => {
+  const userData = await db.query("SELECT * FROM user WHERE id = ?", [id]);
+  return userData;
+};
+
 const registUser = async (name, email, password) => {
   const emailExist = await checkEmail(email);
   if (!emailExist) {
