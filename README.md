@@ -4,7 +4,7 @@ Rest API for ENFIE (Electronic Nose for Incontinence Elderly) System
 
 ## GUIDE
 
-After clone this repository, run this command:
+After clone this repository, run this command
 
 ```
 npm install
@@ -18,42 +18,18 @@ After that execute this command to create table to your database:
 npm run initDb
 ```
 
-Execute seeder:
+### Execute seeder
 
 ```
 npm run seed
 ```
 
-Run server:
+### Run server
 
 ```
 npm run dev
 ```
 
-## Endpoint
+## Dokumentasi
 
-| Method | End-Point    | Deskripsi                                             |
-| ------ | ------------ | ----------------------------------------------------- |
-| `GET`  | /device      | Mendapatakan semua informasi device                   |
-| `GET`  | /data        | Mendapatakan semua data sensor                        |
-| `POST` | /data        | Menambahkan data sensor                               |
-| `GET`  | /temp/:id    | Mendapatkan data suhu berdasarkan id device           |
-| `GET`  | /press/:id   | Menambahkan data tekanan berdasaran id device         |
-| `GET`  | /enose/:id   | Menambahkan data enose berdasarkan id device          |
-| `GET`  | /airqual/:id | Menambahkan data kualitas udara berdasarkan id device |
-
-### Registrasi
-
-Contoh
-
-```
-POST https://localhost:8080/data
-
-{
-    "suhu": 35,
-    "tekanan": 10098,
-    "e_nose": 25438,
-    "kualitas_udara": 89376,
-    "deviceId": 1
-}
-```
+[Docs](https://documenter.getpostman.com/view/16863274/2s9YC7RWnq)
