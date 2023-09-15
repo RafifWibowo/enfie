@@ -29,7 +29,7 @@ connection.connect(async (err) => {
           tekanan: generateRandomTemperature(),
           e_nose: generateRandomTemperature(),
           kualitas_udara: generateRandomTemperature(),
-          deviceId: generateRandomInt(),
+          patient_id: generateRandomInt(),
         };
         // const query = "INSERT INTO data (suhu, a) VALUES (?, ?)";
         // const values = [data.name, data.age];
@@ -61,12 +61,12 @@ function generateRandomInt() {
   // Generate a random number between 0 and 1 (inclusive)
   const randomFraction = Math.random();
 
-  // Map the random fraction to integers 1, 2, or 3
+  // Map the random fraction to integers 2, 3, or 4
   if (randomFraction <= 1 / 3) {
-    return 1;
-  } else if (randomFraction <= 2 / 3) {
     return 2;
-  } else {
+  } else if (randomFraction <= 2 / 3) {
     return 3;
+  } else {
+    return 4;
   }
 }

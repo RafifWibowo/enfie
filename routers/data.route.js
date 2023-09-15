@@ -1,12 +1,9 @@
 const express = require("express");
-const { getDatas, createData, getTempById, getPressureById, getEnoseById, getAirQualById } = require("../controllers/data.controller");
-const { route } = require("./user.route");
+const { createData, getTempById, getPressureById, getEnoseById, getAirQualById } = require("../controllers/data.controller");
+const middleware = require("../middleware/jwt");
+const db = require("../configs/connection");
 
 const router = express.Router();
-
-router.get("/", async (req, res) => {
-  res.send(await getDatas());
-});
 
 router.post("/", async (req, res) => {
   const { suhu, tekanan, e_nose, kualitas_udara, deviceId } = req.body;
@@ -15,30 +12,34 @@ router.post("/", async (req, res) => {
     tekanan,
     e_nose,
     kualitas_udara,
-    deviceId,
+    patient_id,
   };
   const result = await createData(data);
-  res.send(JSON.stringify(result));
+  res.send(result);
 });
 
-router.get("/temp/:id", async (req, res) => {
-  const id = parseInt(req.params.id);
-  res.send(await getTempById(id));
+router.get("/temp", middleware.validateToken, async (req, res) => {
+  const patient_id = req.body.patient_id;
+  const user_id = req.userData.userId;
+  res.send(await getTempById(patient_id, user_id));
 });
 
-router.get("/press/:id", async (req, res) => {
-  const id = parseInt(req.params.id);
-  res.send(await getPressureById(id));
+router.get("/press", middleware.validateToken, async (req, res) => {
+  const patient_id = req.body.patient_id;
+  const user_id = req.userData.userId;
+  res.send(await getPressureById(patient_id, user_id));
 });
 
-router.get("/enose/:id", async (req, res) => {
-  const id = parseInt(req.params.id);
-  res.send(await getEnoseById(id));
+router.get("/enose", middleware.validateToken, async (req, res) => {
+  const patient_id = req.body.patient_id;
+  const user_id = req.userData.userId;
+  res.send(await getEnoseById(patient_id, user_id));
 });
 
-router.get("/airqual/:id", async (req, res) => {
-  const id = parseInt(req.params.id);
-  res.send(await getAirQualById(id));
+router.get("/airqual", middleware.validateToken, async (req, res) => {
+  const patient_id = req.body.patient_id;
+  const user_id = req.userData.userId;
+  res.send(await getAirQualById(patient_id, user_id));
 });
 
 module.exports = router;
