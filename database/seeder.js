@@ -27,9 +27,8 @@ connection.connect(async (err) => {
         const dummyData = {
           suhu: generateRandomTemperature(),
           tekanan: generateRandomTemperature(),
-          e_nose: generateRandomTemperature(),
-          kualitas_udara: generateRandomTemperature(),
-          patient_id: generateRandomInt(),
+          voc: generateRandomTemperature(),
+          patient_id: 1,
         };
         // const query = "INSERT INTO data (suhu, a) VALUES (?, ?)";
         // const values = [data.name, data.age];
@@ -57,16 +56,16 @@ function generateRandomTemperature() {
   return temperatureInCelsius;
 }
 
-function generateRandomInt() {
-  // Generate a random number between 0 and 1 (inclusive)
-  const randomFraction = Math.random();
+// function generateRandomInt() {
+//   // Generate a random number between 0 and 1 (inclusive)
+//   const randomFraction = Math.random();
 
-  // Map the random fraction to integers 2, 3, or 4
-  if (randomFraction <= 1 / 3) {
-    return 2;
-  } else if (randomFraction <= 2 / 3) {
-    return 3;
-  } else {
-    return 4;
-  }
-}
+//   // Map the random fraction to integers 2, 3, or 4
+//   if (randomFraction <= 1 / 3) {
+//     return 2;
+//   } else if (randomFraction <= 2 / 3) {
+//     return 3;
+//   } else {
+//     return 4;
+//   }
+// }
