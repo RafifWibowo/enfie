@@ -6,7 +6,6 @@ const getPatients = async (userId) => {
 };
 
 const insertPatient = async (data) => {
-  //   console.log(data);
   const response = await db.query("INSERT INTO patient SET ?", [data]);
   if (!response.affectedRows) {
     return {

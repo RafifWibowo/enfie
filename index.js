@@ -15,9 +15,9 @@ app.get("/", (req, res) => {
   res.send("Welcom to Enfie rest api.");
 });
 
-app.use("/users", users);
-app.use("/datas", datas);
-app.use("/patients", patients);
+app.use("/user", users);
+app.use("/data", datas);
+app.use("/patient", patients);
 
 app.listen(port, "0.0.0.0", () => {
   console.log(`Server running on port ${port}`);

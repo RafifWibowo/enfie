@@ -27,7 +27,7 @@ connection.connect(async (err) => {
       await connection.query(`CREATE TABLE IF NOT EXISTS patient (id int NOT NULL AUTO_INCREMENT, name varchar(255) NOT NULL, user_id int NOT NULL, birth date NOT NULL, gender tinyint(1) NOT NULL, address text NOT NULL, PRIMARY KEY (id), KEY user_id (user_id), CONSTRAINT patient_ibfk_1 FOREIGN KEY (user_id) REFERENCES user (id) ON DELETE CASCADE);`);
       console.log("patient table created.");
 
-      await connection.query(`CREATE TABLE IF NOT EXISTS data (id int NOT NULL AUTO_INCREMENT,suhu float DEFAULT NULL, tekanan float DEFAULT NULL, voc float DEFAULT NULL, time timestamp NULL DEFAULT CURRENT_TIMESTAMP, patient_id int NOT NULL, PRIMARY KEY (id), KEY patient_id (patient_id), CONSTRAINT data_ibfk_1 FOREIGN KEY (patient_id) REFERENCES patient (id) ON DELETE CASCADE);`);
+      await connection.query(`CREATE TABLE IF NOT EXISTS data (id int NOT NULL AUTO_INCREMENT,suhu float DEFAULT NULL, humidity float DEFAULT NULL, voc float DEFAULT NULL, time timestamp NULL DEFAULT CURRENT_TIMESTAMP, patient_id int NOT NULL, PRIMARY KEY (id), KEY patient_id (patient_id), CONSTRAINT data_ibfk_1 FOREIGN KEY (patient_id) REFERENCES patient (id) ON DELETE CASCADE);`);
       console.log("Data table created.");
 
       console.log("Success create table");

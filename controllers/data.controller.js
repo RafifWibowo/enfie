@@ -15,7 +15,7 @@ const createData = async (data) => {
   };
 };
 
-const getTempById = async (patient_id, user_id) => {
+const getData = async (patient_id, user_id) => {
   const check = await checkPatient(patient_id, user_id);
   if (!check) {
     return {
@@ -23,60 +23,12 @@ const getTempById = async (patient_id, user_id) => {
       message: "Bukan pasien anda",
     };
   }
-  const tempData = await db.query("SELECT suhu FROM data WHERE patient_id = ?", [patient_id]);
+  const allData = await db.query("SELECT suhu, humidity, voc FROM data WHERE patient_id = ?", [patient_id]);
   return {
     status: "success",
-    message: "Berhasil mengambil data suhu",
-    data: tempData,
+    message: "Berhasil mengambil data",
+    data: allData,
   };
 };
 
-const getPressureById = async (patient_id, user_id) => {
-  const check = await checkPatient(patient_id, user_id);
-  if (!check) {
-    return {
-      status: "error",
-      message: "Bukan pasien anda",
-    };
-  }
-  const pressureData = await db.query("SELECT tekanan FROM data WHERE patient_id = ?", [patient_id]);
-  return {
-    status: "success",
-    message: "Berhasil mengambil data tekanan",
-    data: pressureData,
-  };
-};
-
-const getEnoseById = async (patient_id, user_id) => {
-  const check = await checkPatient(patient_id, user_id);
-  if (!check) {
-    return {
-      status: "error",
-      message: "Bukan pasien anda",
-    };
-  }
-  const enoseData = await db.query("SELECT e_nose FROM data WHERE patient_id = ?", [patient_id]);
-  return {
-    status: "success",
-    message: "Berhasil mengambil data enose",
-    data: enoseData,
-  };
-};
-
-const getAirQualById = async (patient_id, user_id) => {
-  const check = await checkPatient(patient_id, user_id);
-  if (!check) {
-    return {
-      status: "error",
-      message: "Bukan pasien anda",
-    };
-  }
-  const airQualData = await db.query("SELECT kualitas_udara FROM data WHERE patient_id = ?", [patient_id]);
-  return {
-    status: "success",
-    message: "Berhasil mengambil data kualitas udara",
-    data: airQualData,
-  };
-};
-
-module.exports = { createData, getAirQualById, getEnoseById, getTempById, getPressureById };
+module.exports = { createData, getData };

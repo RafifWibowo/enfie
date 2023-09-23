@@ -26,9 +26,9 @@ connection.connect(async (err) => {
       for (let i = 0; i < dummy_record; i++) {
         const dummyData = {
           suhu: generateRandomTemperature(),
-          tekanan: generateRandomTemperature(),
+          humidity: generateRandomTemperature(),
           voc: generateRandomTemperature(),
-          patient_id: 1,
+          patient_id: 2,
         };
         // const query = "INSERT INTO data (suhu, a) VALUES (?, ?)";
         // const values = [data.name, data.age];

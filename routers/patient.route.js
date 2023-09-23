@@ -12,9 +12,15 @@ router.get("/", middleware.validateToken, async (req, res) => {
 router.post("/", middleware.validateToken, async (req, res) => {
   const user_id = req.userData.userId;
   const name = req.body.name;
+  const birth = req.body.birth;
+  const gender = req.body.gender;
+  const address = req.body.address;
   const data = {
     name,
     user_id,
+    birth,
+    gender,
+    address,
   };
   res.send(await insertPatient(data));
 });
