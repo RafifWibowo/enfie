@@ -10,7 +10,7 @@ router.get("/", middleware.validateToken, async (req, res) => {
 });
 
 router.post("/", middleware.validateToken, async (req, res) => {
-  const user_id = req.body.userId;
+  const user_id = req.userData.userId;
   const name = req.body.name;
   const birth = req.body.birth;
   const gender = req.body.gender;

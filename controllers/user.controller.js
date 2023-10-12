@@ -9,7 +9,17 @@ const getUsers = async () => {
 
 const getUser = async (id) => {
   const userData = await db.query("SELECT * FROM user WHERE id = ?", [id]);
-  return userData;
+  if (!userData) {
+    return {
+      status: "error",
+      message: "User tidak ada !",
+    };
+  }
+  return {
+    status: "success",
+    message: "User terdaftar",
+    data: userData
+  }
 };
 
 const registUser = async (name, email, password) => {
